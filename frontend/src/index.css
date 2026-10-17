@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caacupe+One&family=Caveat+Brush&family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Pacifico&family=Stack+Sans+Headline:wght@200..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
