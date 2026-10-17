@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function MySkills({ onSkillsChanged }) {
 
     const { getToken } = useAuth();
@@ -25,7 +25,7 @@ function MySkills({ onSkillsChanged }) {
                 const token = await getToken();
 
                 const response = await fetch(
-                    "http://localhost:5000/api/users/me",
+                    `${API_URL}/api/users/me`,
                     {
                         method: "GET",
 
@@ -88,7 +88,7 @@ function MySkills({ onSkillsChanged }) {
             if (editingSkillId) {
 
                 response = await fetch(
-                    `http://localhost:5000/api/users/skills/${editingSkillId}`,
+                    `${API_URL}/api/users/skills/${editingSkillId}`,
                     {
                         method: "PUT",
 
@@ -108,7 +108,7 @@ function MySkills({ onSkillsChanged }) {
             } else {
 
                 response = await fetch(
-                    "http://localhost:5000/api/users/skills",
+                    `${API_URL}/api/users/skills`,
                     {
                         method: "POST",
 
@@ -173,7 +173,7 @@ function MySkills({ onSkillsChanged }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/users/skills/${skillId}`,
+                `${API_URL}/api/users/skills/${skillId}`,
                 {
                     method: "DELETE",
 

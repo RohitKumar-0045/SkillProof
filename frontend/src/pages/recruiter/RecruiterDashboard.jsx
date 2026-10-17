@@ -5,6 +5,7 @@ import { useAuth } from "@clerk/clerk-react";
 import RecruiterSidebar from "../../components/common/RecruiterSidebar.jsx";
 import Navbar from "../../components/common/Navbar.jsx";
 
+const API_URL = import.meta.env.VITE_API_URL;
 function RecruiterDashboard({ user }) {
     const {
         getToken,
@@ -103,7 +104,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/job-applications/${jobId}/applicants`,
+                `${API_URL}/api/job-applications/${jobId}/applicants`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -144,7 +145,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/users/me",
+                `${API_URL}/api/users/me`,
                 {
                     method: "GET",
                     headers: {
@@ -203,7 +204,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/users/profile",
+                `${API_URL}/api/users/profile`,
                 {
                     method: "PUT",
                     headers: {
@@ -244,7 +245,7 @@ function RecruiterDashboard({ user }) {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/job-applications/${selectedJobForApplicants._id}/${application._id}/status`,
+                `${API_URL}/api/job-applications/${selectedJobForApplicants._id}/${application._id}/status`,
                 {
                     method: "PUT",
                     headers: {
@@ -305,7 +306,7 @@ function RecruiterDashboard({ user }) {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/recruiter-ai/${jobId}/${applicationId}/evaluate`,
+                `${API_URL}/api/recruiter-ai/${jobId}/${applicationId}/evaluate`,
                 {
                     method: "POST",
                     headers: {
@@ -351,7 +352,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/jobs/my",
+                `${API_URL}/api/jobs/my`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -415,7 +416,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/jobs",
+                `${API_URL}/api/jobs`,
                 {
                     method: "POST",
                     headers: {
@@ -478,7 +479,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/jobs/${editingJob._id}`,
+                `${API_URL}/api/jobs/${editingJob._id}`,
                 {
                     method: "PUT",
                     headers: {
@@ -527,7 +528,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/jobs/${jobId}`,
+                `${API_URL}/api/jobs/${jobId}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -566,7 +567,7 @@ function RecruiterDashboard({ user }) {
             );
 
             const response = await fetch(
-                "http://localhost:5000/api/users/students",
+                `${API_URL}/api/users/students`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -614,7 +615,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/saved-candidates",
+                `${API_URL}/api/saved-candidates`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -657,7 +658,7 @@ function RecruiterDashboard({ user }) {
             );
 
             const response = await fetch(
-                `http://localhost:5000/api/saved-candidates/${studentId}`,
+                `${API_URL}/api/saved-candidates/${studentId}`,
                 {
                     method: isSaved ? "DELETE" : "POST",
                     headers: {
@@ -697,7 +698,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/assignments/my",
+                `${API_URL}/api/assignments/my`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -784,7 +785,7 @@ function RecruiterDashboard({ user }) {
                 );
 
             const response = await fetch(
-                "http://localhost:5000/api/assignments",
+                `${API_URL}/api/assignments`,
                 {
                     method: "POST",
                     headers: {
@@ -895,7 +896,7 @@ function RecruiterDashboard({ user }) {
                 );
 
             const response = await fetch(
-                `http://localhost:5000/api/assignments/${editingAssignment._id}`,
+                `${API_URL}/api/assignments/${editingAssignment._id}`,
                 {
                     method: "PUT",
                     headers: {
@@ -967,7 +968,7 @@ function RecruiterDashboard({ user }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/assignments/${assignmentId}`,
+                `${API_URL}/api/assignments/${assignmentId}`,
                 {
                     method: "DELETE",
                     headers: {

@@ -9,7 +9,7 @@ import MyProjects from "../../components/students/projects/MyProjects.jsx";
 import MyProfile from "../../components/students/profile/MyProfile.jsx";
 import MyProofs from "../../components/students/proofs/MyProofs.jsx";
 import MyAssignments from "../../components/students/assignments/MyAssignments.jsx";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function StudentDashboard({ user }) {
 
     const { getToken } = useAuth();
@@ -72,7 +72,7 @@ function StudentDashboard({ user }) {
                 }
 
                 const response = await fetch(
-                    "http://localhost:5000/api/evidence",
+                    `${API_URL}/api/evidence`,
                     {
                         method: "GET",
                         headers: {
@@ -183,7 +183,7 @@ function StudentDashboard({ user }) {
             setJobError("");
 
             const response = await fetch(
-                "http://localhost:5000/api/jobs/published"
+                `${API_URL}/api/jobs/published`
             );
 
             const data = await response.json();
@@ -223,7 +223,7 @@ function StudentDashboard({ user }) {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/job-applications/my",
+                `${API_URL}/api/job-applications/my`,
                 {
                     method: "GET",
                     headers: {
@@ -294,7 +294,7 @@ function StudentDashboard({ user }) {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/job-applications/${selectedJob._id}/apply`,
+                `${API_URL}/api/job-applications/${selectedJob._id}/apply`,
                 {
                     method: "POST",
                     headers: {
@@ -380,7 +380,7 @@ function StudentDashboard({ user }) {
             }
 
             const response = await fetch(
-                `http://localhost:5000/api/job-applications/${selectedJob._id}/withdraw`,
+                `${API_URL}/api/job-applications/${selectedJob._id}/withdraw`,
                 {
                     method: "PUT",
                     headers: {

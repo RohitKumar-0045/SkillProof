@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function MyProjects({ onProjectsChanged }) {
     const { getToken } = useAuth();
@@ -28,7 +29,7 @@ function MyProjects({ onProjectsChanged }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/projects",
+                `${API_URL}/api/projects`,
                 {
                     method: "GET",
                     headers: {
@@ -71,7 +72,7 @@ function MyProjects({ onProjectsChanged }) {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/github/repos",
+                `${API_URL}/api/github/repos`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -256,8 +257,8 @@ function MyProjects({ onProjectsChanged }) {
                 Boolean(editingProject);
 
             const url = isEditing
-                ? `http://localhost:5000/api/projects/${editingProject._id}`
-                : "http://localhost:5000/api/projects";
+                ? `${API_URL}/api/projects/${editingProject._id}`
+                : `${API_URL}/api/projects`;
 
             const response = await fetch(url, {
                 method: isEditing
@@ -348,7 +349,7 @@ function MyProjects({ onProjectsChanged }) {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/projects/${projectId}`,
+                `${API_URL}/api/projects/${projectId}`,
                 {
                     method: "DELETE",
                     headers: {

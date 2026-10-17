@@ -1,5 +1,5 @@
 import { useAuth, useUser } from "@clerk/clerk-react";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function CreateUser() {
     const { getToken } = useAuth();
     const { user } = useUser();
@@ -8,7 +8,7 @@ function CreateUser() {
         try {
             const token = await getToken();
 
-            const response = await fetch("http://localhost:5000/api/users", {
+            const response = await fetch(`${API_URL}/api/users`, {
                 method: "POST",
 
                 headers: {

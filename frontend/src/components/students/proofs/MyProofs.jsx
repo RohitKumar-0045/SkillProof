@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function MyProofs() {
     const { getToken } = useAuth();
@@ -26,19 +27,19 @@ function MyProofs() {
 
             const [userResponse, projectsResponse, evidenceResponse] =
                 await Promise.all([
-                    fetch("http://localhost:5000/api/users/me", {
+                    fetch(`${API_URL}/api/users/me`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }),
 
-                    fetch("http://localhost:5000/api/projects", {
+                    fetch(`${API_URL}/api/projects`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }),
 
-                    fetch("http://localhost:5000/api/evidence", {
+                    fetch(`${API_URL}/api/evidence`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
@@ -120,7 +121,7 @@ function MyProofs() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/evidence",
+                `${API_URL}/api/evidence`,
                 {
                     method: "POST",
 
@@ -189,7 +190,7 @@ function MyProofs() {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/evidence/${evidenceId}/analyze`,
+                `${API_URL}/api/evidence/${evidenceId}/analyze`,
                 {
                     method: "POST",
 
@@ -236,7 +237,7 @@ function MyProofs() {
             const token = await getToken();
 
             const response = await fetch(
-                `http://localhost:5000/api/evidence/${evidenceId}`,
+                `${API_URL}/api/evidence/${evidenceId}`,
                 {
                     method: "DELETE",
 

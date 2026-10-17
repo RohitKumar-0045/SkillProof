@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import GitHubConnection from "./GitHubConnection.jsx";
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 function MyProfile() {
     const { getToken } = useAuth();
@@ -48,7 +48,7 @@ function MyProfile() {
             setResumeMessage("");
             const token = await getToken();
             const response = await fetch(
-                "http://localhost:5000/api/users/resume/preview",
+                `${API_URL}/api/users/resume/preview`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             if (!response.ok) {
@@ -71,7 +71,7 @@ function MyProfile() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/users/me",
+                `${API_URL}/api/users/me`,
                 {
                     method: "GET",
                     headers: {
@@ -156,7 +156,7 @@ function MyProfile() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/users/profile",
+                `${API_URL}/api/users/profile`,
                 {
                     method: "PUT",
 
@@ -296,7 +296,7 @@ function MyProfile() {
             );
 
             const response = await fetch(
-                "http://localhost:5000/api/users/resume",
+                `${API_URL}/api/users/resume`,
                 {
                     method: "POST",
                     headers: {
@@ -368,7 +368,7 @@ function MyProfile() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/users/resume",
+                `${API_URL}/api/users/resume`,
                 {
                     method: "DELETE",
 

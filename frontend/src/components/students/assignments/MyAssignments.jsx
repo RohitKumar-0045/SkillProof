@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const MAX_ATTEMPTS = 3;
 
 function MyAssignments() {
@@ -47,7 +47,7 @@ function MyAssignments() {
                 submissionsResponse
             ] = await Promise.all([
                 fetch(
-                    "http://localhost:5000/api/assignments/published",
+                    `${API_URL}/api/assignments/published`,
                     {
                         headers: {
                             Authorization:
@@ -57,7 +57,7 @@ function MyAssignments() {
                 ),
 
                 fetch(
-                    "http://localhost:5000/api/submissions/my",
+                    `${API_URL}/api/submissions/my`,
                     {
                         headers: {
                             Authorization:
@@ -300,7 +300,7 @@ function MyAssignments() {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/submissions",
+                    `${API_URL}/api/submissions`,
                     {
                         method: "POST",
 
@@ -360,7 +360,7 @@ function MyAssignments() {
 
             const response =
                 await fetch(
-                    `http://localhost:5000/api/submissions/${submissionId}/evaluate`,
+                    `${API_URL}/api/submissions/${submissionId}/evaluate`,
                     {
                         method: "POST",
 

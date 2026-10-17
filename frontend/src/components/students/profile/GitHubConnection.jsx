@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function GitHubConnection() {
     const { getToken } = useAuth();
 
@@ -19,7 +19,7 @@ function GitHubConnection() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/github/connection",
+                `${API_URL}/api/github/connection`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ function GitHubConnection() {
             setLoadingRepositories(true);
 
             const response = await fetch(
-                "http://localhost:5000/api/github/repos",
+                `${API_URL}/api/github/repos`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -98,7 +98,7 @@ function GitHubConnection() {
             const token = await getToken();
 
             const response = await fetch(
-                "http://localhost:5000/api/github/connect",
+                `${API_URL}/api/github/connect`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
